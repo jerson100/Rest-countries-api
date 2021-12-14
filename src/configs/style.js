@@ -4,7 +4,7 @@ const THEME = {
     BACKGROUND: "hsl(207, 26%, 17%)",
     ELEMENTS: "hsl(209, 23%, 22%)",
     GRAY: "hsl(0, 0%, 52%)",
-    BORDER: "rgba(0,0,0,0.03)",
+    BORDER: "rgba(0,0,0,0.05)",
   },
   LIGHT: {
     TEXT: "hsl(200, 15%, 8%)",
