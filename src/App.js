@@ -1,8 +1,10 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import HomeView from "./views/HomeView/HomeView";
-import { createGlobalStyle } from "styled-components";
+import { useState } from "react";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
+import AppRouter from "./components/routes/AppRouter";
+import { THEME } from "./configs/style";
 
 const GlobalStyle = createGlobalStyle`
+
   *, *::before, *::after{
       margin: 0;
     padding: 0;
@@ -10,22 +12,22 @@ const GlobalStyle = createGlobalStyle`
   }
   
   body {
-      font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     font-size: 16px;
+    background-color: ${({ theme: { BACKGROUND } }) => BACKGROUND};
+    color: ${({ theme: { TEXT } }) => TEXT};
   }
 
 `;
 
 function App() {
+  const [theme, settheme] = useState("LIGHT");
   return (
     <>
-      <GlobalStyle />
-      <Router>
-        <Routes>
-          <Route path="/home" element={<HomeView />} />
-          <Route path="/" element={<HomeView />} />
-        </Routes>
-      </Router>
+      <ThemeProvider theme={THEME[theme]}>
+        <GlobalStyle />
+        <AppRouter />
+      </ThemeProvider>
     </>
   );
 }
