@@ -5,7 +5,8 @@ const HeaderStyle = styled.header`
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 2rem 1rem;
-  box-shadow: 0 2px 4px 4px ${({ theme: { ELEMENTS } }) => ELEMENTS};
+  background-color: ${({ theme: { ELEMENTS } }) => ELEMENTS};
+  box-shadow: 0 2px 4px 4px ${({ theme: { BORDER } }) => BORDER};
 `;
 const TextStyle = styled.h1`
   font-weight: 800;
