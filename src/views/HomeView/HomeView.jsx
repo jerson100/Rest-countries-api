@@ -1,10 +1,10 @@
 import React from "react";
-import NavigationHeader from "../../components/common/NavigationHeader";
-import Search from "../../components/common/Search/Search";
-import Select from "../../components/common/Select/Select";
-import { HomeViewContainerStyle, MainStyle } from "./homeView.style";
+import CountriesList from "../../components/common/CountriesList";
+import Search from "../../components/common/Search";
+import Select from "../../components/common/Select";
+import { HomeViewStyle } from "./homeView.style";
 
-const countries = [
+const regions = [
   {
     country: "ÁFRICA",
     id: 1,
@@ -18,19 +18,32 @@ const countries = [
     id: 3,
   },
 ];
+const countries = [
+  {
+    id: 1,
+    name: "Germany",
+    population: "81.770.900",
+    capital: "Berlin",
+    region: "Europe",
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png",
+  },
+  {
+    id: 2,
+    name: "Germany",
+    population: "81.770.900",
+    capital: "Berlin",
+    region: "Europe",
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png",
+  },
+];
 
 const HomeView = () => {
   return (
-    <>
-      <NavigationHeader />
-      <MainStyle>
-        <Search />
-        <Select placeholder={"Filter by Region"} data={countries} />
-        <HomeViewContainerStyle>
-          <p>Bienvenido...</p>
-        </HomeViewContainerStyle>
-      </MainStyle>
-    </>
+    <HomeViewStyle>
+      <Search />
+      <Select placeholder={"Filter by Region"} data={regions} />
+      <CountriesList countries={countries} />
+    </HomeViewStyle>
   );
 };
 
