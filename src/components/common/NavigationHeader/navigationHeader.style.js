@@ -1,13 +1,17 @@
 import styled from "styled-components";
 
 const HeaderStyle = styled.header`
+  background-color: ${({ theme: { ELEMENTS } }) => ELEMENTS};
+  box-shadow: 0 2px 4px 4px ${({ theme: { BORDER } }) => BORDER};
+  padding: 2rem 1rem;
+`;
+
+const HeaderContentStyle = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding: 2rem 1rem;
-  background-color: ${({ theme: { ELEMENTS } }) => ELEMENTS};
-  box-shadow: 0 2px 4px 4px ${({ theme: { BORDER } }) => BORDER};
 `;
+
 const TextStyle = styled.h1`
   font-weight: 800;
   font-size: 1.1rem;
@@ -38,4 +42,4 @@ const ThemeStyle = styled.div`
   }
 `;
 
-export { HeaderStyle, TextStyle, ThemeStyle };
+export { HeaderStyle, TextStyle, ThemeStyle, HeaderContentStyle };
