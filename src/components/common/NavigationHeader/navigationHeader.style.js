@@ -19,6 +19,8 @@ const TextStyle = styled.h1`
 `;
 const ThemeStyle = styled.div`
   display: flex;
+  cursor: pointer;
+  user-select: none;
   align-items: center;
   .icon {
     height: 1rem;

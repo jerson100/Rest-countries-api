@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import AppRouter from "./components/routes/AppRouter";
 import { THEME } from "./configs/style";
+import { ThemeChangeProvider } from "./providers/ThemeProvider";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -26,7 +27,9 @@ function App() {
     <>
       <ThemeProvider theme={THEME[theme]}>
         <GlobalStyle />
-        <AppRouter />
+        <ThemeChangeProvider setTheme={settheme} theme={theme}>
+          <AppRouter />
+        </ThemeChangeProvider>
       </ThemeProvider>
     </>
   );

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeChangeContext } from "../../../providers/ThemeProvider";
 import Container from "../Container";
 import {
   TextStyle,
@@ -8,12 +9,14 @@ import {
 } from "./navigationHeader.style";
 
 const NavigationHeader = () => {
+  const { handleChange, theme } = useContext(ThemeChangeContext);
+
   return (
     <HeaderStyle>
       <Container>
         <HeaderContentStyle>
           <TextStyle>Where in the world?</TextStyle>
-          <ThemeStyle active={false}>
+          <ThemeStyle active={false} onClick={handleChange}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="icon"
@@ -30,7 +33,9 @@ const NavigationHeader = () => {
                 id="STROKES"
               />
             </svg>
-            <span className="text">Dark Mode</span>
+            <span className="text">
+              {theme == "LIGHT" ? "Dark" : "Light"} Mode
+            </span>
           </ThemeStyle>
         </HeaderContentStyle>
       </Container>
