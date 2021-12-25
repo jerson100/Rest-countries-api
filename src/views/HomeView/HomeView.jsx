@@ -1,8 +1,6 @@
 import React from "react";
 import Container from "../../components/common/Container";
 import CountriesList from "../../components/common/CountriesList";
-import Search from "../../components/common/Search";
-import Select from "../../components/common/Select";
 import Form from "./components/Form/Form";
 import { HomeViewStyle } from "./homeView.style";
 
@@ -58,10 +56,8 @@ const countries = [
 const HomeView = () => {
   return (
     <HomeViewStyle>
-      <Container>
-        <Form regions={regions} />
-        <CountriesList countries={countries} />
-      </Container>
+      <Form regions={regions} />
+      <CountriesList countries={countries} />
     </HomeViewStyle>
   );
 };

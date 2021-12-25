@@ -1,17 +1,19 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import CountryDetails from "../../../views/CountryDetails";
 import HomeView from "../../../views/HomeView";
-import MainLayout from "../../layouts/MainLayout";
+import CountriesLayout from "../../layouts/CountriesLayout";
 
 const AppRouter = () => {
   return (
     <Router>
-      <MainLayout>
-        <Routes>
-          <Route path="/home" element={<HomeView />} />
-          <Route path="/" element={<HomeView />} />
-        </Routes>
-      </MainLayout>
+      <Routes>
+        <Route path="/" element={<CountriesLayout />}>
+          <Route path="countries" element={<HomeView />} />
+          <Route path="" element={<HomeView />} />
+          <Route path="countries/:id" element={<CountryDetails />} />
+        </Route>
+      </Routes>
     </Router>
   );
 };
