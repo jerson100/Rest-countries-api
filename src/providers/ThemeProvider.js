@@ -10,7 +10,7 @@ const ThemeChangeProvider = ({ children, theme, setTheme }) => {
         ? theme_storage
         : "LIGHT"
     );
-  }, []);
+  }, [setTheme]);
 
   useEffect(() => {
     localStorage.setItem("theme", theme);

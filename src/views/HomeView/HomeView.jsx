@@ -1,5 +1,4 @@
 import React from "react";
-import Container from "../../components/common/Container";
 import CountriesList from "../../components/common/CountriesList";
 import Form from "./components/Form/Form";
 import { HomeViewStyle } from "./homeView.style";
@@ -36,7 +35,7 @@ const countries = [
     src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png",
   },
   {
-    id: 2,
+    id: 3,
     name: "Germany",
     population: "81.770.900",
     capital: "Berlin",
@@ -44,7 +43,7 @@ const countries = [
     src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png",
   },
   {
-    id: 2,
+    id: 4,
     name: "Germany",
     population: "81.770.900",
     capital: "Berlin",

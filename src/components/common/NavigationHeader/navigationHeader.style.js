@@ -16,6 +16,7 @@ const TextStyle = styled.h1`
   font-weight: 800;
   font-size: 1.1rem;
   margin: 0;
+  cursor: pointer;
 `;
 const ThemeStyle = styled.div`
   display: flex;

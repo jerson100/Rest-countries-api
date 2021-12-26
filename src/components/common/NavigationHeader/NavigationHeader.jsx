@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { ThemeChangeContext } from "../../../providers/ThemeProvider";
 import Container from "../Container";
 import {
@@ -10,12 +11,15 @@ import {
 
 const NavigationHeader = () => {
   const { handleChange, theme } = useContext(ThemeChangeContext);
-
+  const navigate = useNavigate();
+  const handleHome = () => {
+    navigate("/countries");
+  };
   return (
     <HeaderStyle>
       <Container>
         <HeaderContentStyle>
-          <TextStyle>Where in the world?</TextStyle>
+          <TextStyle onClick={handleHome}>Where in the world?</TextStyle>
           <ThemeStyle active={false} onClick={handleChange}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +38,7 @@ const NavigationHeader = () => {
               />
             </svg>
             <span className="text">
-              {theme == "LIGHT" ? "Dark" : "Light"} Mode
+              {theme === "LIGHT" ? "Dark" : "Light"} Mode
             </span>
           </ThemeStyle>
         </HeaderContentStyle>
