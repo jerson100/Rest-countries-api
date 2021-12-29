@@ -1,5 +1,6 @@
 import React from "react";
 import ButtonBase from "../../components/common/ButtonBase";
+import useScrollTop from "../../hooks/useScrollTop";
 import {
   ContentStyle,
   DescriptionContainerStyle,
@@ -24,6 +25,7 @@ const CountryDetails = ({
   currencies,
   languages,
 }) => {
+  useScrollTop();
   return (
     <div>
       <CountryButtonBack />

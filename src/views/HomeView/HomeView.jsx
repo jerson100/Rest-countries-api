@@ -1,5 +1,6 @@
 import React from "react";
 import CountriesList from "../../components/common/CountriesList";
+import useScrollTop from "../../hooks/useScrollTop";
 import Form from "./components/Form/Form";
 import { HomeViewStyle } from "./homeView.style";
 
@@ -53,6 +54,7 @@ const countries = [
 ];
 
 const HomeView = () => {
+  useScrollTop();
   return (
     <HomeViewStyle>
       <Form regions={regions} />
