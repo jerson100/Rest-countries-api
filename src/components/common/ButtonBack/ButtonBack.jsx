@@ -1,14 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { ButtonStyle } from "./buttonBack.style";
 
-const ButtonBack = ({ children }) => {
-  const navigate = useNavigate();
-  const handleClick = () => {
-    navigate("/countries");
-  };
+const ButtonBack = ({ className }) => {
   return (
-    <ButtonStyle onClick={handleClick}>
+    <ButtonStyle className={className} toHref="/countries">
       <svg
         className="icon"
         xmlns="http://www.w3.org/2000/svg"
