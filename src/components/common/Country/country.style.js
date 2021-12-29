@@ -4,6 +4,7 @@ const CountryStyle = styled.article`
   box-shadow: 0 0 4px 4px ${({ theme: { BORDER } }) => BORDER};
   background-color: 0 0 4px 4px ${({ theme: { BACKGROUND } }) => BACKGROUND};
   flex: 1 0 0;
+  cursor: pointer;
   margin: var(--gap);
   @media screen and (min-width: 780px) {
     flex: 0 0 calc(100% / var(--col) - (var(--gap) * 2));

@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   CountryFlagStyle,
   CountryHeaderStyle,
@@ -8,8 +9,12 @@ import {
 } from "./country.style";
 
 const Country = ({ src, name, population, region, capital }) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`/countries/${name}`);
+  };
   return (
-    <CountryStyle>
+    <CountryStyle onClick={handleClick}>
       <CountryFlagStyle src={src} />
       <CountryHeaderStyle>
         <CountryTitleStyle>{name}</CountryTitleStyle>
