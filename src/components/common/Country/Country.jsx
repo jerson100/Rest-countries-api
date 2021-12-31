@@ -1,5 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+
 import {
   CountryFlagStyle,
   CountryHeaderStyle,
@@ -8,7 +11,21 @@ import {
   CountryTitleStyle,
 } from "./country.style";
 
-const Country = ({ src, name, population, region, capital }) => {
+const Country = ({ src, name, population, region, capital, loading }) => {
+  return loading ? (
+    <CountryLoading />
+  ) : (
+    <CountryDefault
+      src={src}
+      name={name}
+      population={population}
+      region={region}
+      capital={capital}
+    />
+  );
+};
+
+const CountryDefault = ({ src, name, population, region, capital }) => {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(`/countries/${name}`);
@@ -30,6 +47,30 @@ const Country = ({ src, name, population, region, capital }) => {
           <li>
             <span>Capital:</span>
             <span>{capital}</span>
+          </li>
+        </CountryListStyle>
+      </CountryHeaderStyle>
+    </CountryStyle>
+  );
+};
+
+const CountryLoading = () => {
+  return (
+    <CountryStyle>
+      <Skeleton height={150} />
+      <CountryHeaderStyle>
+        <CountryTitleStyle>
+          <Skeleton height={25} width={"100%"} />
+        </CountryTitleStyle>
+        <CountryListStyle>
+          <li>
+            <Skeleton height={25} />
+          </li>
+          <li>
+            <Skeleton height={25} />
+          </li>
+          <li>
+            <Skeleton height={25} />
           </li>
         </CountryListStyle>
       </CountryHeaderStyle>
