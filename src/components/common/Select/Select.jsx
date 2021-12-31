@@ -2,10 +2,13 @@ import React from "react";
 
 import { SelectStyle } from "./select.style";
 
-const Select = ({ data, placeholder }) => {
+const Select = ({ data, placeholder, setregion, region }) => {
+  const handleChange = (e) => {
+    setregion(e.target.value);
+  };
   return (
-    <SelectStyle>
-      <option value="0">{placeholder}</option>
+    <SelectStyle onChange={handleChange} value={region}>
+      <option value="all">{placeholder}</option>
       {data.map(({ id, country }) => {
         return (
           <option key={id} value={country}>

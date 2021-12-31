@@ -1,64 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import COUNTRIES_API from "../../api/countries";
 import CountriesList from "../../components/common/CountriesList";
 import useScrollTop from "../../hooks/useScrollTop";
 import Form from "./components/Form/Form";
 import { HomeViewStyle } from "./homeView.style";
 
-const regions = [
-  {
-    country: "ÁFRICA",
-    id: 1,
-  },
-  {
-    country: "AMÉRICA",
-    id: 2,
-  },
-  {
-    country: "ASIA",
-    id: 3,
-  },
-];
-const countries = [
-  {
-    id: 1,
-    name: "Germany",
-    population: "81.770.900",
-    capital: "Berlin",
-    region: "Europe",
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png",
-  },
-  {
-    id: 2,
-    name: "Germany",
-    population: "81.770.900",
-    capital: "Berlin",
-    region: "Europe",
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png",
-  },
-  {
-    id: 3,
-    name: "Germany",
-    population: "81.770.900",
-    capital: "Berlin",
-    region: "Europe",
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png",
-  },
-  {
-    id: 4,
-    name: "Germany",
-    population: "81.770.900",
-    capital: "Berlin",
-    region: "Europe",
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png",
-  },
-];
-
 const HomeView = () => {
   useScrollTop();
+  const [countries, setcountries] = useState([]);
+  const [loadingCountries, setLoadingCountries] = useState(true);
+  const [region, setregion] = useState("all");
+
+  useEffect(() => {
+    const d = async () => {
+      setLoadingCountries(true);
+      try {
+        const data =
+          region === "all"
+            ? await COUNTRIES_API.all()
+            : await COUNTRIES_API.getByName(region);
+        setcountries(data);
+      } catch (e) {
+        setcountries([]);
+      } finally {
+        setLoadingCountries(false);
+      }
+    };
+    d();
+  }, [region]);
   return (
     <HomeViewStyle>
-      <Form regions={regions} />
-      <CountriesList countries={countries} />
+      <Form setregion={setregion} region={region} />
+      <CountriesList loading={loadingCountries} countries={countries} />
     </HomeViewStyle>
   );
 };
