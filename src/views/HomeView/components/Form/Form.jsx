@@ -4,10 +4,10 @@ import Search from "../../../../components/common/Search";
 import Select from "../../../../components/common/Select";
 import { FormStyle } from "./formStyle.style";
 
-const Form = ({ setregion, region }) => {
+const Form = ({ setregion, region, country, setcountry, loadingCountries }) => {
   return (
-    <FormStyle>
-      <Search />
+    <FormStyle load={loadingCountries}>
+      <Search country={country} setcountry={setcountry} />
       <Select
         placeholder={"Filter by Region"}
         data={REGIONS}

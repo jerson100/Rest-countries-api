@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import COUNTRIES_API from "../../api/countries";
 import CountriesList from "../../components/common/CountriesList";
 import useScrollTop from "../../hooks/useScrollTop";
@@ -10,6 +10,7 @@ const HomeView = () => {
   const [countries, setcountries] = useState([]);
   const [loadingCountries, setLoadingCountries] = useState(true);
   const [region, setregion] = useState("all");
+  const [country, setcountry] = useState("");
 
   useEffect(() => {
     const d = async () => {
@@ -28,10 +29,25 @@ const HomeView = () => {
     };
     d();
   }, [region]);
+
+  const search_countries = useMemo(() => {
+    return !country
+      ? countries
+      : countries.filter(({ name: { common: commonName } }) =>
+          commonName.toLowerCase().startsWith(country)
+        );
+  }, [country, countries]);
+
   return (
     <HomeViewStyle>
-      <Form setregion={setregion} region={region} />
-      <CountriesList loading={loadingCountries} countries={countries} />
+      <Form
+        setregion={setregion}
+        region={region}
+        country={country}
+        setcountry={setcountry}
+        loadingCountries={loadingCountries}
+      />
+      <CountriesList loading={loadingCountries} countries={search_countries} />
     </HomeViewStyle>
   );
 };

@@ -1,9 +1,12 @@
 import React from "react";
 import { SearchFormStyle, SearchInputStyle } from "./search.style";
 
-const Search = () => {
+const Search = ({ country, setcountry }) => {
+  const handleChange = (e) => {
+    setcountry(e.target.value);
+  };
   return (
-    <SearchFormStyle handleClick={() => {}}>
+    <SearchFormStyle>
       <svg
         className="icon"
         xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +39,12 @@ const Search = () => {
         <g></g>
         <g></g>
       </svg>
-      <SearchInputStyle type="text" placeholder="Search for a country..." />
+      <SearchInputStyle
+        type="text"
+        value={country}
+        onChange={handleChange}
+        placeholder="Search for a country..."
+      />
     </SearchFormStyle>
   );
 };
