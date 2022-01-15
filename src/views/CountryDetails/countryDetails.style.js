@@ -14,8 +14,18 @@ const noMarginBottom =
 const ContentStyle = styled.div`
   display: flex;
   flex-direction: column;
+  .loadingImg {
+    height: 200px !important;
+    width: 100% !important;
+    margin-bottom: 2rem;
+  }
   @media screen and (min-width: 768px) {
     flex-direction: row;
+    .loadingImg {
+      height: 360px !important;
+      width: 300px !important;
+      margin-bottom: 0rem;
+    }
   }
 `;
 
@@ -36,6 +46,7 @@ const FlagContainerStyle = styled.div`
 const FlagImageStyle = styled.img`
   max-width: 100%;
   height: 100%;
+  width: 100%;
 `;
 const DescriptionContainerStyle = styled.div`
   @media screen and (min-width: 768px) {
