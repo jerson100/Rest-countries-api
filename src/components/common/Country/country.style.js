@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 const CountryStyle = styled.article`
   box-shadow: 0 0 4px 4px ${({ theme: { BORDER } }) => BORDER};
-  background-color: 0 0 4px 4px ${({ theme: { BACKGROUND } }) => BACKGROUND};
+  /* background-color: ${({ theme: { BACKGROUND } }) => BACKGROUND}; */
+  background-color: ${({ theme: { ELEMENTS } }) => ELEMENTS};
   flex: 1 0 0;
   cursor: pointer;
   margin: var(--gap);
@@ -23,7 +24,7 @@ const CountryFlagStyle = styled.img`
 
 const CountryHeaderStyle = styled.header`
   padding: 2rem 1.3rem;
-  background-color: ${({ theme: { ELEMENTS } }) => ELEMENTS};
+  /* background-color: ${({ theme: { ELEMENTS } }) => ELEMENTS}; */
 `;
 
 const CountryTitleStyle = styled.h1`
