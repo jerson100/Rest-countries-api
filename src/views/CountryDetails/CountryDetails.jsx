@@ -50,7 +50,7 @@ const CountryDetails = () => {
       console.log("abort");
       mounted = false;
     };
-  }, [params.id]);
+  }, [params.id, location.state?.country]);
   useScrollTop();
   return !loading ? (
     countryObject ? (
