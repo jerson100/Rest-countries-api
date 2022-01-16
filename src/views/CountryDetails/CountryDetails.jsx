@@ -26,20 +26,31 @@ const CountryDetails = () => {
   const location = useLocation();
   useEffect(() => {
     setloading(true);
+    let mounted = true;
     const getC = async () => {
       try {
         const data = await (location.state?.country
           ? Countries.getByCode(location.state.country)
           : Countries.getByName(params.id));
-        setcountry(data && data[0] ? data[0] : null);
+        if (mounted) {
+          setcountry(data && data[0] ? data[0] : null);
+        }
       } catch (e) {
-        setcountry(null);
+        if (mounted) {
+          setcountry(null);
+        }
       } finally {
-        setloading(false);
+        if (mounted) {
+          setloading(false);
+        }
       }
     };
     getC();
-  }, [params.id, location.state?.country]);
+    return () => {
+      console.log("abort");
+      mounted = false;
+    };
+  }, [params.id]);
   useScrollTop();
   return !loading ? (
     countryObject ? (

@@ -13,21 +13,31 @@ const HomeView = () => {
   const [country, setcountry] = useState("");
 
   useEffect(() => {
+    let mounted = true;
     const d = async () => {
       setLoadingCountries(true);
       try {
         const data =
           region === "all"
             ? await COUNTRIES_API.all()
-            : await COUNTRIES_API.getByName(region);
-        setcountries(data);
+            : await COUNTRIES_API.getByRegion(region);
+        if (mounted) {
+          setcountries(data);
+        }
       } catch (e) {
-        setcountries([]);
+        if (mounted) {
+          setcountries([]);
+        }
       } finally {
-        setLoadingCountries(false);
+        if (mounted) {
+          setLoadingCountries(false);
+        }
       }
     };
     d();
+    return () => {
+      mounted = false;
+    };
   }, [region]);
 
   const search_countries = useMemo(() => {
