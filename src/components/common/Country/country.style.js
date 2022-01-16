@@ -27,7 +27,7 @@ const CountryHeaderStyle = styled.header`
   /* background-color: ${({ theme: { ELEMENTS } }) => ELEMENTS}; */
 `;
 
-const CountryTitleStyle = styled.h1`
+const CountryTitleStyle = styled.h2`
   font-size: 1.3rem;
   margin-bottom: 1.2rem;
 `;
