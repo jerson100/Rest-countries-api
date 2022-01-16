@@ -32,7 +32,7 @@ const CountryDefault = ({ src, name, population, region, capital }) => {
   };
   return (
     <CountryStyle onClick={handleClick}>
-      <CountryFlagStyle src={src} />
+      <CountryFlagStyle src={src} alt={name} />
       <CountryHeaderStyle>
         <CountryTitleStyle>{name}</CountryTitleStyle>
         <CountryListStyle>

@@ -95,7 +95,7 @@ const CountryDetailsContent = ({
       <CountryButtonBack />
       <ContentStyle>
         <FlagContainerStyle>
-          <FlagImageStyle src={img} />
+          <FlagImageStyle src={img} alt={country} />
         </FlagContainerStyle>
         <DescriptionContainerStyle>
           <TitleStyle>{country}</TitleStyle>
